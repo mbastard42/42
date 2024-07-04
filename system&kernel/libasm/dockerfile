@@ -1,0 +1,12 @@
+FROM debian:buster
+
+WORKDIR /data
+
+RUN apt update && apt upgrade -y
+RUN apt install -y \
+    make \
+    gcc \
+    nasm \
+    binutils
+
+ENTRYPOINT ["bash"]
