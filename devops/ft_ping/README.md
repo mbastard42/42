@@ -1,2 +1,2 @@
-# FT_PING
+# ft_ping
 

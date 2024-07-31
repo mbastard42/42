@@ -1,0 +1,11 @@
+FROM ubuntu
+
+WORKDIR /data
+
+RUN apt update && apt upgrade -y
+RUN apt install -y \
+    make \
+    gcc \
+    iputils-ping
+
+ENTRYPOINT ["bash"]

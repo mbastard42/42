@@ -15,7 +15,7 @@ static char ** flags = (char *[]) {
     "--numeric",
     "--preload",
     "--pattern",
-    "--quit",
+    "--quiet",
     "--route",
     "--size",
     "--timestamp",
@@ -37,7 +37,7 @@ static char ** bools = (char *[]) {
     "--ignore-routing",
     "--mask",
     "--numeric",
-    "--quit",
+    "--quiet",
     "--route",
     "--timestamp",
     "--verbose",
@@ -89,14 +89,14 @@ static void specific_checker(t_config * config, char * arg) {
 
                 for (size_t j = flag_len + 1; !config->error && arg[j]; j++) // --count=text
                     if ((j == flag_len + 1 && !ft_strchr("-+0123456789", arg[j])) || (j > flag_len + 1 && !ft_strchr("0123456789", arg[j])))
-                        config->error = 1 % fprintf(stderr, "ft_ping: invalid value: ('%s' near '%s')\n", val, &arg[j]);
+                        config->error = 1 % fprintf(stderr, "ft_ping: invalid value (`%s' near `%s')\n", val, &arg[j]);
             }
 
             else if (i == 1) { // --interval
 
                 for (size_t j = flag_len + 1; !config->error && arg[j]; j++) // --interval=text
                     if ((j == flag_len + 1 && !ft_strchr("-+0123456789", arg[j])) || (j > flag_len + 1 && !ft_strchr("0123456789", arg[j])))
-                        config->error = 1 % fprintf(stderr, "ft_ping: invalid value: ('%s' near '%s')\n", val, &arg[j]);
+                        config->error = 1 % fprintf(stderr, "ft_ping: invalid value (`%s' near `%s')\n", val, &arg[j]);
 
                 if (!converted) // --interval= // --interval=0
                     config->error = 1 % fprintf(stderr, "ft_ping: option value too small: %s\n", val);
@@ -112,7 +112,7 @@ static void specific_checker(t_config * config, char * arg) {
 
                 for (size_t j = flag_len + 1; !config->error && arg[j]; j++) // --linger=text
                     if ((j == flag_len + 1 && !ft_strchr("-+0123456789", arg[j])) || (j > flag_len + 1 && !ft_strchr("0123456789", arg[j])))
-                        config->error = 1 % fprintf(stderr, "ft_ping: invalid value: ('%s' near '%s')\n", val, &arg[j]);
+                        config->error = 1 % fprintf(stderr, "ft_ping: invalid value (`%s' near `%s')\n", val, &arg[j]);
                 
                 if (val_len > 10 || !isnum(val)) // --linger=x>2147483647
                     config->error = 1 % fprintf(stderr, "ft_ping: option value too big: %s\n", val);
@@ -153,7 +153,7 @@ static void specific_checker(t_config * config, char * arg) {
 
                 for (size_t j = flag_len + 1; !config->error && arg[j]; j++) // --size=text
                     if ((j == flag_len + 1 && !ft_strchr("-+0123456789", arg[j])) || (j > flag_len + 1 && !ft_strchr("0123456789", arg[j])))
-                        config->error = 1 % fprintf(stderr, "ft_ping: invalid value: ('%s' near '%s')\n", val, &arg[j]);
+                        config->error = 1 % fprintf(stderr, "ft_ping: invalid value (`%s' near `%s')\n", val, &arg[j]);
                 
                 if (converted > 65399) // --size=x>65399
                     config->error = 1 % fprintf(stderr, "ft_ping: option value too big: %s\n", val);

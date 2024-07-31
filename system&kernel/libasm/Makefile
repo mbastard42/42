@@ -29,7 +29,7 @@ $(ODIR)%$(COMP) : $(SDIR)%$(FILE)
 #																										#
 ${NAME} : $(OBJS)
 	@mkdir -p $(BDIR)
-	$(LK) $(LFLG) $(NAME) $(OBJS) 
+	$(LK) $(NAME) $(OBJS) $(LFLG)
 #																										#
 #																										#
 build : ${NAME}

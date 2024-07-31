@@ -26,7 +26,7 @@ static char ** flags = (char *[]) {
     "-l",
     "--preload",
     "-q",
-    "--quit",
+    "--quiet",
     "-R",
     "--route",
     "-s",
