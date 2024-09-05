@@ -79,7 +79,7 @@ def main():
         std_rmse.append(math.sqrt(sum([(y - (std_t0_step[r] + (x * std_t1_step[r]))) ** 2 for x, y in zip(std_mileage, std_price)]) / (r + 1)))
 
     plt.plot([r for r in range(std_round)], std_rmse)
-    plt.savefig('tmp/2.1.rmse.png')
+    plt.savefig('tmp/2.rmse.png')
     plt.figure()
 
     plt.scatter(mileage, price)
