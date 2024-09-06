@@ -5,7 +5,7 @@ WORKDIR /data
 RUN apt update && apt upgrade -y
 RUN apt install -y \
     make \
-    gcc \
+    clang \
     nasm \
     binutils
 

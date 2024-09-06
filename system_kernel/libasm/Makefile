@@ -38,6 +38,6 @@ docker :
 	docker build -t libasm . && docker run -it -v ./:/data libasm
 
 test : build
-	gcc -no-pie test/main.c -L$(BDIR) -l$(subst $(BDIR)lib,,$(subst .a,,$(NAME))) -o $(BDIR)test.out
+	clang test/main.c -L$(BDIR) -l$(subst $(BDIR)lib,,$(subst .a,,$(NAME))) -o $(BDIR)test.out
 
 .PHONY : build clean fclean re all docker test
