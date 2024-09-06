@@ -1,25 +1,30 @@
 section .text
 
     global ft_strdup
+    extern ft_strlen
+    extern ft_strcpy
+    extern malloc
+    extern __errno_location
 
-ft_strcpy:
+ft_strdup:
 
-    ; rdi = dst | rsi = src
+    ; rdi = str
 
-    mov rbx, rdi    ; hold = dst
+    mov r9, rdi         ; hold = str
+    call ft_strlen      ; len = ft_strlen(str)
+    mov rdi, rax        ; rdi = len
+    inc rdi             ; rdi++
+    call malloc         ; ptr = malloc(rdi)
+    test rax, rax       ;
+    jz error            ;
+    mov rdi, rax        ; rdi = ptr
+    mov rsi, r9         ; rsi = hold
+    call ft_strcpy      ;
+    ret
 
-    copy:
+    error:
 
-        cmp byte [rsi], 0   ; *src == 0
-        je end              ; if cmp = true => jump to end
-        mov al, byte [rsi]  ; tmp = *src
-        mov byte [rdi], al  ; *dst = tmp
-        inc rdi             ; dst++
-        inc rsi             ; src++
-        jmp copy            ; loop
-
-    end:
-
-        mov byte [rdi], 0   ; *dst = 0
-        mov rax, rbx        ; return = hold
+        call __errno_location       ; rax = *errno
+        mov dword [rax], 12         ; errno = ENOMEM
+        mov rax, 0                  ; return = NULL
         ret

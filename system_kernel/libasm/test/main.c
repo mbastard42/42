@@ -104,6 +104,21 @@ void read_test() {
     errno = 0;
 }
 
+void strdup_test() {
+
+    printf("\n\ttesting ft_strdup:\n\n");
+
+    char * str = strdup("ptrtest");
+
+    printf("ft_strdup(\"test\") = %s\n", ft_strdup("test"));
+    printf("strdup(\"test\") = %s\n", strdup("test"));
+
+    write(1, "\n", 1);
+
+    printf("ft_strdup(str) = %s\n", ft_strdup(str));
+    printf("strdup(str) = %s\n", strdup(str));
+}
+
 int main() {
 
     strlen_test();
@@ -111,6 +126,7 @@ int main() {
     strcmp_test();
     write_test();
     read_test();
+    strdup_test();
     write(1, "\n", 1);
 
     return 0;
